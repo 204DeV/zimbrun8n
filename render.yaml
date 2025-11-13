@@ -12,6 +12,12 @@ services:
       - key: DB_TYPE
         value: postgresdb
 
+      - key: DB_POSTGRESDB_PORT
+        value: "5432"
+
+      - key: DB_POSTGRESDB_SCHEMA
+        value: public
+
       - key: DB_POSTGRESDB_DATABASE
         fromDatabase:
           name: n8n-db
@@ -31,6 +37,9 @@ services:
         fromDatabase:
           name: n8n-db
           property: password
+
+    dependsOn:
+      - name: n8n-db
 
 databases:
   - name: n8n-db
